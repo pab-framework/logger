@@ -10,6 +10,8 @@ import (
 	"time"
 )
 
+var cl Log
+
 type CatLog struct {
 	logOption
 }
@@ -27,10 +29,10 @@ type Option func(*logOption)
 
 func NewCatLog(opts ...Option) Log {
 	option := newDefaultLogOption(opts...)
-	cl := CatLog{
+	cl = &CatLog{
 		logOption: option,
 	}
-	return &cl
+	return cl
 }
 
 func WithTimeFormat(format string) Option {
