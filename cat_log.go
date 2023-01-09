@@ -130,7 +130,7 @@ func (cl *CatLog) printLog(level int, caller, msg string) {
 		l = "[INFO]"
 	}
 	if level >= cl.level {
-		cl.outLog(cl.logFile, fmt.Sprintf("%s %s %s %d -- %s\n", time.Now().Format(cl.timeFormat), l, fmt.Sprintf(cl.callerFormat, caller), fmt.Sprintf(cl.goroutineFormat, tool.GetGoroutineID()), msg))
+		cl.outLog(cl.logFile, fmt.Sprintf("%s %s %s %s -- %s\n", time.Now().Format(cl.timeFormat), l, fmt.Sprintf(cl.callerFormat, caller), fmt.Sprintf(cl.goroutineFormat, tool.GetGoroutineID()), msg))
 	}
 }
 
