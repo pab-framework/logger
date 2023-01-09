@@ -7,8 +7,13 @@ import (
 
 var log Log
 
-func NewLogger(logPath string) Log {
+func NewLoggerWithFile(logPath string) Log {
 	InitLog(logPath)
+	return log
+}
+
+func NewLoggerWithConsole() Log {
+	log = NewCatLog()
 	return log
 }
 
