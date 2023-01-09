@@ -93,7 +93,7 @@ func newDefaultLogOption(opts ...Option) logOption {
 	defaultOption := logOption{
 		timeFormat:      "2006-01-02T15:04:05.000",
 		level:           InfoLevel,
-		callerFormat:    "[%s]",
+		callerFormat:    "%s",
 		goroutineFormat: "[_it=%d]",
 		outLog:          outConsole,
 	}
@@ -130,7 +130,7 @@ func (cl *CatLog) printLog(level int, caller, msg string) {
 		l = "[INFO]"
 	}
 	if level >= cl.level {
-		cl.outLog(cl.logFile, fmt.Sprintf("%s %s %s %d -- %s\n", time.Now().Format(cl.timeFormat), l, fmt.Sprintf(cl.callerFormat, caller), tool.GetGoroutineID(), msg))
+		cl.outLog(cl.logFile, fmt.Sprintf("%s %s %s %d -- %s\n", time.Now().Format(cl.timeFormat), l, fmt.Sprintf(cl.callerFormat, caller), fmt.Sprintf(cl.goroutineFormat, tool.GetGoroutineID()), msg))
 	}
 }
 
